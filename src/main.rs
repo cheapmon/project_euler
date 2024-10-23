@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 mod util;
 
 fn main() {
@@ -11,7 +13,8 @@ fn main() {
     // println!("Problem 8: {}", problem_8());
     // println!("Problem 9: {}", problem_9());
     // println!("Problem 10: {}", problem_10());
-    println!("Problem 11: {}", problem_11());
+    // println!("Problem 11: {}", problem_11());
+    println!("Problem 12: {}", problem_12());
 }
 
 // Problem 1
@@ -164,16 +167,16 @@ fn problem_11() -> u64 {
         .collect::<Vec<_>>();
     let (width, height) = (20, 20);
     let mut max = 0u64;
-    
+
     for x in 0..16 {
         for y in 0..20 {
             let value: u64 = (0..4).map(|dx| grid[x + dx + y * width]).product();
-            if (value > max) { 
+            if (value > max) {
                 max = value;
             }
         }
     }
-    
+
     for x in 0..20 {
         for y in 0..16 {
             let value: u64 = (0..4).map(|dy| grid[x + (y + dy) * width]).product();
@@ -182,7 +185,7 @@ fn problem_11() -> u64 {
             }
         }
     }
-    
+
     for x in 3..20 {
         for y in 0..16 {
             let value = (0..4).map(|d| grid[x - d + (y + d) * width]).product();
@@ -202,4 +205,23 @@ fn problem_11() -> u64 {
     }
 
     max
+}
+
+// Problem 12
+fn problem_12() -> u64 {
+    fn count_factors(i: u64) -> u64 {
+        let mut factors: HashMap<u64, u64> = HashMap::new();
+
+        for prime in util::prime_factors(i) {
+            if factors.contains_key(&prime) {
+                factors.insert(prime, factors[&prime] + 1);
+            } else {
+                factors.insert(prime, 1);
+            }
+        }
+
+        factors.values().map(|i| i + 1).product()
+    }
+
+    util::triangle_numbers().find(|i| count_factors(*i) > 500).unwrap()
 }
