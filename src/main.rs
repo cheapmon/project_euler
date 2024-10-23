@@ -1,5 +1,5 @@
+use num::{BigInt, ToPrimitive};
 use std::collections::HashMap;
-use num::BigInt;
 
 mod util;
 
@@ -17,7 +17,8 @@ fn main() {
     // println!("Problem 11: {}", problem_11());
     // println!("Problem 12: {}", problem_12());
     // println!("Problem 13: {}", problem_13());
-    println!("Problem 14: {}", problem_14());
+    // println!("Problem 14: {}", problem_14());
+    println!("Problem 15: {}", problem_15());
 }
 
 // Problem 1
@@ -168,13 +169,13 @@ fn problem_11() -> u64 {
         .filter(|part| !part.is_empty())
         .map(|part| part.trim().parse::<u64>().unwrap())
         .collect::<Vec<_>>();
-    let (width, height) = (20, 20);
+    let width = 20;
     let mut max = 0u64;
 
     for x in 0..16 {
         for y in 0..20 {
             let value: u64 = (0..4).map(|dx| grid[x + dx + y * width]).product();
-            if (value > max) {
+            if value > max {
                 max = value;
             }
         }
@@ -183,7 +184,7 @@ fn problem_11() -> u64 {
     for x in 0..20 {
         for y in 0..16 {
             let value: u64 = (0..4).map(|dy| grid[x + (y + dy) * width]).product();
-            if (value > max) {
+            if value > max {
                 max = value;
             }
         }
@@ -192,7 +193,7 @@ fn problem_11() -> u64 {
     for x in 3..20 {
         for y in 0..16 {
             let value = (0..4).map(|d| grid[x - d + (y + d) * width]).product();
-            if (value > max) {
+            if value > max {
                 max = value;
             }
         }
@@ -201,7 +202,7 @@ fn problem_11() -> u64 {
     for x in 0..16 {
         for y in 0..16 {
             let value = (0..4).map(|d| grid[x + d + (y + d) * width]).product();
-            if (value > max) {
+            if value > max {
                 max = value;
             }
         }
@@ -373,11 +374,15 @@ fn problem_14() -> u64 {
     for i in 2..1_000_000 {
         let length_of_chain = compute_length_of_chain(i, &mut cache);
 
-        if (length_of_chain > longest_chain) {
+        if length_of_chain > longest_chain {
             longest_chain = length_of_chain;
             number_which_produces_longest_chain = i;
         }
     }
 
     number_which_produces_longest_chain
+}
+
+fn problem_15() -> u64 {
+    ((21..=40).product::<BigInt>() / (2..=20).product::<BigInt>()).to_u64().unwrap()
 }
