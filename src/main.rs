@@ -18,7 +18,8 @@ fn main() {
     // println!("Problem 12: {}", problem_12());
     // println!("Problem 13: {}", problem_13());
     // println!("Problem 14: {}", problem_14());
-    println!("Problem 15: {}", problem_15());
+    // println!("Problem 15: {}", problem_15());
+    println!("Problem 16: {}", problem_16());
 }
 
 // Problem 1
@@ -383,6 +384,20 @@ fn problem_14() -> u64 {
     number_which_produces_longest_chain
 }
 
+// Problem 15
 fn problem_15() -> u64 {
     ((21..=40).product::<BigInt>() / (2..=20).product::<BigInt>()).to_u64().unwrap()
+}
+
+// Problem 16
+fn problem_16() -> u64 {
+    let mut i = BigInt::from(2).pow(1000);
+    let mut sum = BigInt::from(0);
+
+    while i > 0.into() {
+        sum += &i % 10;
+        i /= 10;
+    }
+
+    sum.to_u64().unwrap()
 }
