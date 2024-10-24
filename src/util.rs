@@ -87,6 +87,39 @@ mod triangle_numbers {
     }
 }
 
+mod grid {
+    use std::ops::Range;
+
+    #[derive(Debug)]
+    pub struct Grid<T> {
+        pub data: Vec<T>,
+        pub width: usize,
+    }
+
+    impl<T> Grid<T> {
+        pub fn new(data: Vec<T>, width: usize) -> Self {
+            Grid { data, width }
+        }
+
+        pub fn xs(&self) -> Range<usize> {
+            0..self.width
+        }
+
+        pub fn ys(&self) -> Range<usize> {
+            0..(self.data.len() / self.width)
+        }
+
+        pub fn get(&self, x: usize, y: usize) -> &T {
+            &self.data[x + y * self.width]
+        }
+
+        pub fn set(&mut self, x: usize, y: usize, item: T) {
+            self.data[x + y * self.width] = item;
+        }
+    }
+}
+
 pub use fib::fib;
-pub use primes::{primes, is_prime, prime_factors};
+pub use grid::Grid;
+pub use primes::{is_prime, prime_factors, primes};
 pub use triangle_numbers::triangle_numbers;
