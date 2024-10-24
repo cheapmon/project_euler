@@ -1,6 +1,6 @@
 use num::{BigInt, ToPrimitive};
 
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     let mut i = BigInt::from(2).pow(1000);
     let mut sum = BigInt::from(0);
 

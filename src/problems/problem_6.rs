@@ -1,4 +1,4 @@
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     let mut sum_of_squares = 0u64;
     let mut square_of_sum = 0u64;
 

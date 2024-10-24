@@ -1,7 +1,7 @@
 use crate::util;
 use std::collections::HashMap;
 
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     fn count_factors(i: u64) -> u64 {
         let mut factors: HashMap<u64, u64> = HashMap::new();
 

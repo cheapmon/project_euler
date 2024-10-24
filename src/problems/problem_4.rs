@@ -1,4 +1,4 @@
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     let mut largest = 0;
 
     for i in (100..=999).rev() {

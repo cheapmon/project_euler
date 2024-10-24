@@ -16,28 +16,29 @@ mod problem_15;
 mod problem_16;
 mod problem_17;
 mod problem_18;
+mod problem_67;
 
 pub fn run(i: usize) -> u64 {
-    let problems = vec![
-        problem_1::run,
-        problem_2::run,
-        problem_3::run,
-        problem_4::run,
-        problem_5::run,
-        problem_6::run,
-        problem_7::run,
-        problem_8::run,
-        problem_9::run,
-        problem_10::run,
-        problem_11::run,
-        problem_12::run,
-        problem_13::run,
-        problem_14::run,
-        problem_15::run,
-        problem_16::run,
-        problem_17::run,
-        problem_18::run,
-    ];
-
-    problems[i - 1]()
+    match i {
+        1 => problem_1::run(),
+        2 => problem_2::run(),
+        3 => problem_3::run(),
+        4 => problem_4::run(),
+        5 => problem_5::run(),
+        6 => problem_6::run(),
+        7 => problem_7::run(),
+        8 => problem_8::run(),
+        9 => problem_9::run(),
+        10 => problem_10::run(),
+        11 => problem_11::run(),
+        12 => problem_12::run(),
+        13 => problem_13::run(),
+        14 => problem_14::run(),
+        15 => problem_15::run(),
+        16 => problem_16::run(),
+        17 => problem_17::run(),
+        18 => problem_18::run(),
+        67 => problem_67::run(),
+        _ => 0,
+    }
 }

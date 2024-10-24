@@ -1,6 +1,6 @@
 use crate::util::Grid;
 
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     let mut grid = Grid::<u64>::new(
         vec![
             75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -22,6 +22,10 @@ pub fn run() -> u64 {
         15,
     );
 
+    iterate_triangle(&mut grid)
+}
+
+pub(super) fn iterate_triangle(grid: &mut Grid<u64>) -> u64 {
     for x in grid.xs() {
         for y in grid.ys().skip(1) {
             let left = if x == 0 { 0 } else { *grid.get(x - 1, y - 1) };

@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn run() -> u64 {
+pub(super) fn run() -> u64 {
     let mut longest_chain = 1;
     let mut number_which_produces_longest_chain = 1;
 
