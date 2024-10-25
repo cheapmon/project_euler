@@ -22,6 +22,7 @@ mod problem_21;
 mod problem_22;
 mod problem_23;
 mod problem_24;
+mod problem_25;
 mod problem_67;
 
 pub fn run(i: usize) -> u64 {
@@ -50,6 +51,7 @@ pub fn run(i: usize) -> u64 {
         22 => problem_22::run(),
         23 => problem_23::run(),
         24 => problem_24::run(),
+        25 => problem_25::run(),
         67 => problem_67::run(),
         _ => 0,
     }

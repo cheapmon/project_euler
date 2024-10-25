@@ -1,23 +1,25 @@
 mod fib {
+    use num::BigInt;
+
     struct Fib {
-        current: u64,
-        previous: u64,
+        current: BigInt,
+        previous: BigInt,
     }
 
     impl Iterator for Fib {
-        type Item = u64;
+        type Item = BigInt;
 
         fn next(&mut self) -> Option<Self::Item> {
-            let tmp = self.current;
-            self.current += self.previous;
-            self.previous = tmp;
+            let tmp = self.current.clone();
+            self.current += self.previous.clone();
+            self.previous = tmp.clone();
 
-            Some(self.current)
+            Some(self.current.clone())
         }
     }
 
-    pub fn fib() -> impl Iterator<Item=u64> {
-        Fib { current: 1, previous: 0 }
+    pub fn fib() -> impl Iterator<Item=BigInt> {
+        Fib { current: BigInt::from(1), previous: BigInt::from(0) }
     }
 }
 
