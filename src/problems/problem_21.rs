@@ -15,7 +15,7 @@ pub(super) fn run() -> u64 {
     sum
 }
 
-fn proper_divisors(i: u64) -> Vec<u64> {
+pub(super) fn proper_divisors(i: u64) -> Vec<u64> {
     let prime_factors = prime_factors(i);
     let mut proper_divisors = vec![1];
 

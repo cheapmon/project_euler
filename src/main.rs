@@ -2,6 +2,6 @@ mod problems;
 mod util;
 
 fn main() {
-    let problem = 22;
+    let problem = 23;
     println!("Problem {}: {}", problem, problems::run(problem));
 }
