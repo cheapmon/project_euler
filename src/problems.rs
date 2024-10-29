@@ -28,6 +28,7 @@ mod problem_27;
 mod problem_28;
 mod problem_29;
 mod problem_30;
+mod problem_31;
 mod problem_67;
 
 pub fn run(i: usize) -> String {
@@ -62,6 +63,7 @@ pub fn run(i: usize) -> String {
         28 => problem_28::run().to_string(),
         29 => problem_29::run().to_string(),
         30 => problem_30::run().to_string(),
+        31 => problem_31::run().to_string(),
         67 => problem_67::run().to_string(),
         _ => String::new(),
     }
